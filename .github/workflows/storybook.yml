@@ -1,0 +1,25 @@
+name: Storybook
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar dependências
+        run: yarn install --frozen-lockfile
+      - name: Build Storybook
+        run: yarn workspace shared-ui build-storybook
+      - name: Deploy Storybook to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./shared-ui/storybook-static
+        if: github.ref == 'refs/heads/main'

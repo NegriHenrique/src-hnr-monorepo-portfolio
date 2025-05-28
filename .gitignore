@@ -1,0 +1,48 @@
+# Node
+node_modules/
+yarn.lock
+npm-debug.log*
+
+# Build
+.next/
+dist/
+build/
+coverage/
+storybook-static/
+
+# Vite
+.vite/
+
+# Logs
+*.log
+
+# Python
+backend/fastapi/venv/
+__pycache__/
+*.pyc
+
+# VSCode
+.vscode/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+
+# Docker
+*.local
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test
+*.lcov
+
+# Misc
+.idea/
+*.swp
+
+# Ignore generated docs
+/docs/*.html

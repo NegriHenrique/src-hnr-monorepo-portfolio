@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: portfolio
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      NEXTAUTH_SECRET: changeme
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/portfolio
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar dependências
+        run: yarn install --frozen-lockfile
+      - name: Rodar testes backend (NestJS)
+        run: yarn workspace backend/nestjs test
+      - name: Cobertura de testes backend (NestJS)
+        run: yarn workspace backend/nestjs test:cov
+      - name: Rodar testes shared-ui
+        run: yarn workspace shared-ui test
+      - name: Cobertura de testes shared-ui
+        run: yarn workspace shared-ui test:cov
+      - name: Build host
+        run: yarn workspace host build
+      - name: Build GeoGrid
+        run: yarn workspace mfes/geogrid build
+      - name: Build BG-Remover
+        run: yarn workspace mfes/bg-remover build
+      - name: Build Focus
+        run: yarn workspace mfes/focus build
+      - name: Testes E2E (Cypress)
+        run: yarn workspace host cypress:run

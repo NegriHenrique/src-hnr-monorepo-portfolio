@@ -1,0 +1,46 @@
+name: Deploy Docker Images
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar dependências
+        run: yarn install --frozen-lockfile
+      - name: Login no GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build e push Host
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/host:latest ./host
+          docker push ghcr.io/${{ github.repository }}/host:latest
+      - name: Build e push GeoGrid
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/geogrid:latest ./mfes/geogrid
+          docker push ghcr.io/${{ github.repository }}/geogrid:latest
+      - name: Build e push BG-Remover
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/bg-remover:latest ./mfes/bg-remover
+          docker push ghcr.io/${{ github.repository }}/bg-remover:latest
+      - name: Build e push Focus
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/focus:latest ./mfes/focus
+          docker push ghcr.io/${{ github.repository }}/focus:latest
+      - name: Build e push NestJS
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/nestjs:latest ./backend/nestjs
+          docker push ghcr.io/${{ github.repository }}/nestjs:latest
+      - name: Build e push FastAPI
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/fastapi:latest ./backend/fastapi
+          docker push ghcr.io/${{ github.repository }}/fastapi:latest

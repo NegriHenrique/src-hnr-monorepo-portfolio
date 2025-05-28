@@ -1,0 +1,43 @@
+{
+  "name": "portfolio-microfrontends",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "host",
+    "mfes/geogrid",
+    "mfes/bg-remover",
+    "mfes/focus",
+    "shared-ui",
+    "backend/nestjs",
+    "backend/fastapi"
+  ],
+  "scripts": {
+    "dev:host": "yarn workspace host dev",
+    "dev:geogrid": "yarn workspace @mfes/geogrid dev",
+    "dev:bg-remover": "yarn workspace @mfes/bg-remover dev",
+    "dev:focus": "yarn workspace @mfes/focus dev",
+    "dev:shared-ui": "yarn workspace shared-ui storybook",
+    "dev:nestjs": "yarn workspace backend/nestjs start:dev",
+    "dev:fastapi": "yarn workspace backend/fastapi dev",
+    "dev:mfe:geogrid": "yarn workspace @mfes/geogrid dev",
+    "dev:mfe:bg-remover": "yarn workspace @mfes/bg-remover dev",
+    "dev:mfe:focus": "yarn workspace @mfes/focus dev",
+    "build:mfe:geogrid": "yarn workspace @mfes/geogrid build",
+    "build:mfe:bg-remover": "yarn workspace @mfes/bg-remover build",
+    "build:mfe:focus": "yarn workspace @mfes/focus build",
+    "preview:mfe:geogrid": "yarn workspace @mfes/geogrid preview",
+    "preview:mfe:bg-remover": "yarn workspace @mfes/bg-remover preview",
+    "preview:mfe:focus": "yarn workspace @mfes/focus preview",
+    "preview:all:mfe": "concurrently -k -n geogrid,bgremover,focus -c blue,green,magenta 'yarn preview:mfe:geogrid' 'yarn preview:mfe:bg-remover' 'yarn preview:mfe:focus'",
+    "dev:all": "concurrently -k -n mfes,host -c blue,magenta 'yarn preview:all:mfe' 'yarn workspace host dev:single-spa'",
+    "serve:systemjs": "yarn build:mfe:geogrid && yarn build:mfe:bg-remover && yarn build:mfe:focus && concurrently -k -n geogrid,bgremover,focus -c blue,green,magenta 'npx http-server mfes/geogrid/dist -p 3001 --cors' 'npx http-server mfes/bg-remover/dist -p 3002 --cors' 'npx http-server mfes/focus/dist -p 3003 --cors'"
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.5.0",
+    "http-server": "^14.1.1",
+    "vite": "^5.2.0"
+  }
+}

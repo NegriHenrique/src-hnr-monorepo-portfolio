@@ -1,0 +1,86 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: portfolio
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  mongodb:
+    image: mongo:7
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+  redis:
+    image: redis:7
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+  host:
+    build: ../host
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      NEXTAUTH_SECRET: changeme
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/portfolio
+    depends_on:
+      - postgres
+  geogrid:
+    build: ../mfes/geogrid
+    ports:
+      - "3001:3000"
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - host
+  bgremover:
+    build: ../mfes/bg-remover
+    ports:
+      - "3002:3000"
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - host
+  focus:
+    build: ../mfes/focus
+    ports:
+      - "3003:3000"
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - host
+  nestjs:
+    build: ../backend/nestjs
+    ports:
+      - "4000:3000"
+    environment:
+      NODE_ENV: production
+      NEXTAUTH_SECRET: changeme
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/portfolio
+    depends_on:
+      - postgres
+  fastapi:
+    build: ../backend/fastapi
+    ports:
+      - "8000:8000"
+    environment:
+      PYTHONUNBUFFERED: 1
+    depends_on:
+      - host
+volumes:
+  pgdata:
+  mongodata:
+  redisdata:
