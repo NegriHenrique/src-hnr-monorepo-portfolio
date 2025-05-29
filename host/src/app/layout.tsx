@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "../root-config";
-import { SessionProvider } from "next-auth/react";
 import SingleSpaLoader from "./SingleSpaLoader";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,11 +28,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js" />
-        <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js" />
-        <script src="https://cdn.jsdelivr.net/npm/systemjs@6.14.2/dist/system.min.js" />
-        <script src="/react.systemjs-shim.js" />
-        <script src="/react-dom.systemjs-shim.js" />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/systemjs@6.14.2/dist/system.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script src="/react.systemjs-shim.js" strategy="beforeInteractive" />
+        <Script
+          src="/react-dom.systemjs-shim.js"
+          strategy="beforeInteractive"
+        />
         <script type="systemjs-importmap">
           {`
             {

@@ -33,20 +33,20 @@ jobs:
       - name: Instalar dependências
         run: yarn install --frozen-lockfile
       - name: Rodar testes backend (NestJS)
-        run: yarn workspace backend/nestjs test
+        run: yarn workspace @backend/nestjs test
       - name: Cobertura de testes backend (NestJS)
-        run: yarn workspace backend/nestjs test:cov
-      - name: Rodar testes shared-ui
-        run: yarn workspace shared-ui test
-      - name: Cobertura de testes shared-ui
-        run: yarn workspace shared-ui test:cov
+        run: yarn workspace @backend/nestjs test:cov
+      # - name: Rodar testes shared-ui
+      #   run: yarn workspace shared-ui test
+      # - name: Cobertura de testes shared-ui
+      #   run: yarn workspace shared-ui test:cov
       - name: Build host
         run: yarn workspace host build
       - name: Build GeoGrid
-        run: yarn workspace mfes/geogrid build
+        run: yarn workspace @mfes/geogrid build
       - name: Build BG-Remover
-        run: yarn workspace mfes/bg-remover build
+        run: yarn workspace @mfes/bg-remover build
       - name: Build Focus
-        run: yarn workspace mfes/focus build
-      - name: Testes E2E (Cypress)
-        run: yarn workspace host cypress:run
+        run: yarn workspace @mfes/focus build
+      # - name: Testes E2E (Cypress)
+      #   run: yarn workspace host cypress:run

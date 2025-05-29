@@ -1,6 +1,5 @@
 import NextAuth from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
-import { JWT } from "next-auth/jwt";
 
 const handler = NextAuth({
   providers: [
@@ -13,7 +12,7 @@ const handler = NextAuth({
     strategy: "jwt",
   },
   callbacks: {
-    async jwt({ token, account, user, trigger, session }) {
+    async jwt({ token, account, user, trigger }) {
       // Adiciona claims customizados ao JWT
       if (account && user) {
         token.id = user.id;
@@ -21,12 +20,12 @@ const handler = NextAuth({
         token.name = user.name;
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
-        token.accessTokenExpires = account.expires_at * 1000;
+        token.accessTokenExpires = (account.expires_at ?? 0) * 1000;
       }
       // Refresh automático do accessToken se expirado
       if (
         trigger === "update" &&
-        Date.now() > token.accessTokenExpires &&
+        Date.now() > (token.accessTokenExpires as number) &&
         token.refreshToken
       ) {
         // Exemplo: lógica para refresh com Cognito/Google/etc
@@ -38,10 +37,12 @@ const handler = NextAuth({
     },
     async session({ session, token }) {
       // Expõe claims customizados na sessão
-      session.user.id = token.id;
-      session.user.email = token.email;
-      session.user.name = token.name;
-      session.accessToken = token;
+      if (session.user) {
+        // session.user.id = token.id;
+        session.user.email = token.email;
+        session.user.name = token.name;
+      }
+      // session.accessToken = token;
       return session;
     },
   },

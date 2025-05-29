@@ -1,8 +1,8 @@
-import { registerApplication, start } from "single-spa";
+import { LifeCycles, registerApplication, start } from "single-spa";
 
 declare const System: {
-  import: (module: string) => Promise<any>;
-  [key: string]: any;
+  import: (module: string) => Promise<unknown>;
+  [key: string]: unknown;
 };
 
 function domGetter(containerId: string) {
@@ -11,7 +11,10 @@ function domGetter(containerId: string) {
 
 registerApplication({
   name: "geogrid",
-  app: () => System.import("http://localhost:3001/geogrid.js"),
+  app: () =>
+    System.import("http://localhost:3001/geogrid.js") as Promise<
+      LifeCycles<{ domElementGetter: () => HTMLElement }>
+    >,
   activeWhen: ["/geogrid"],
   customProps: {
     domElementGetter: domGetter("geogrid-container"),
@@ -19,7 +22,10 @@ registerApplication({
 });
 registerApplication({
   name: "bg-remover",
-  app: () => System.import("http://localhost:3002/bgremover.js"),
+  app: () =>
+    System.import("http://localhost:3002/bgremover.js") as Promise<
+      LifeCycles<{ domElementGetter: () => HTMLElement }>
+    >,
   activeWhen: ["/bg-remover"],
   customProps: {
     domElementGetter: domGetter("bg-remover-container"),
@@ -27,7 +33,10 @@ registerApplication({
 });
 registerApplication({
   name: "focus",
-  app: () => System.import("http://localhost:3003/focus.js"),
+  app: () =>
+    System.import("http://localhost:3003/focus.js") as Promise<
+      LifeCycles<{ domElementGetter: () => HTMLElement }>
+    >,
   activeWhen: ["/focus"],
   customProps: {
     domElementGetter: domGetter("focus-container"),

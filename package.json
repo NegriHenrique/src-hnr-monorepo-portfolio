@@ -17,7 +17,7 @@
     "dev:bg-remover": "yarn workspace @mfes/bg-remover dev",
     "dev:focus": "yarn workspace @mfes/focus dev",
     "dev:shared-ui": "yarn workspace shared-ui storybook",
-    "dev:nestjs": "yarn workspace backend/nestjs start:dev",
+    "dev:nestjs": "yarn workspace @backend/nestjs start:dev",
     "dev:fastapi": "yarn workspace backend/fastapi dev",
     "dev:mfe:geogrid": "yarn workspace @mfes/geogrid dev",
     "dev:mfe:bg-remover": "yarn workspace @mfes/bg-remover dev",
