@@ -25,25 +25,25 @@ jobs:
           echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
       - name: Build e push Host
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/host:latest ./host
-          docker push ghcr.io/${{ github.repository }}/host:latest
+          docker build -t ghcr.io/$REPO/host:latest ./host
+          docker push ghcr.io/$REPO/host:latest
       - name: Build e push GeoGrid
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/geogrid:latest ./mfes/geogrid
-          docker push ghcr.io/${{ github.repository }}/geogrid:latest
+          docker build -t ghcr.io/$REPO/geogrid:latest ./mfes/geogrid
+          docker push ghcr.io/$REPO/geogrid:latest
       - name: Build e push BG-Remover
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/bg-remover:latest ./mfes/bg-remover
-          docker push ghcr.io/${{ github.repository }}/bg-remover:latest
+          docker build -t ghcr.io/$REPO/bg-remover:latest ./mfes/bg-remover
+          docker push ghcr.io/$REPO/bg-remover:latest
       - name: Build e push Focus
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/focus:latest ./mfes/focus
-          docker push ghcr.io/${{ github.repository }}/focus:latest
+          docker build -t ghcr.io/$REPO/focus:latest ./mfes/focus
+          docker push ghcr.io/$REPO/focus:latest
       - name: Build e push NestJS
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/nestjs:latest ./backend/nestjs
-          docker push ghcr.io/${{ github.repository }}/nestjs:latest
+          docker build -t ghcr.io/$REPO/nestjs:latest ./backend/nestjs
+          docker push ghcr.io/$REPO/nestjs:latest
       - name: Build e push FastAPI
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/fastapi:latest ./backend/fastapi
-          docker push ghcr.io/${{ github.repository }}/fastapi:latest
+          docker build -t ghcr.io/$REPO/fastapi:latest ./backend/fastapi
+          docker push ghcr.io/$REPO/fastapi:latest
