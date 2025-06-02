@@ -16,4 +16,6 @@ jobs:
       - name: Instalar dependências
         run: yarn install --frozen-lockfile
       - name: Publicar Storybook no Chromatic
-        run: yarn workspace shared-ui chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        run: yarn workspace shared-ui chromatic --project-token=$CHROMATIC_PROJECT_TOKEN
