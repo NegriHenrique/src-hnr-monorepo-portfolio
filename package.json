@@ -9,10 +9,11 @@
     "mfes/focus",
     "shared-ui",
     "backend/nestjs",
-    "backend/fastapi"
+    "backend/fastapi",
+    "cms"
   ],
   "scripts": {
-    "dev:host": "yarn workspace host dev",
+    "dev:host": "yarn workspace host dev:single-spa",
     "dev:geogrid": "yarn workspace @mfes/geogrid dev",
     "dev:bg-remover": "yarn workspace @mfes/bg-remover dev",
     "dev:focus": "yarn workspace @mfes/focus dev",
@@ -29,8 +30,11 @@
     "preview:mfe:bg-remover": "yarn workspace @mfes/bg-remover preview",
     "preview:mfe:focus": "yarn workspace @mfes/focus preview",
     "preview:all:mfe": "concurrently -k -n geogrid,bgremover,focus -c blue,green,magenta 'yarn preview:mfe:geogrid' 'yarn preview:mfe:bg-remover' 'yarn preview:mfe:focus'",
-    "dev:all": "concurrently -k -n mfes,host -c blue,magenta 'yarn preview:all:mfe' 'yarn workspace host dev:single-spa'",
-    "serve:systemjs": "yarn build:mfe:geogrid && yarn build:mfe:bg-remover && yarn build:mfe:focus && concurrently -k -n geogrid,bgremover,focus -c blue,green,magenta 'npx http-server mfes/geogrid/dist -p 3001 --cors' 'npx http-server mfes/bg-remover/dist -p 3002 --cors' 'npx http-server mfes/focus/dist -p 3003 --cors'"
+    "dev:cms": "yarn workspace @cms/cms-portfolio develop",
+    "build:cms": "yarn workspace @cms/cms-portfolio build",
+    "start:cms": "yarn workspace @cms/cms-portfolio start",
+    "dev:all": "concurrently -k -n mfes,host,cms -c blue,magenta,cyan 'yarn preview:all:mfe' 'yarn workspace host dev:single-spa' 'yarn dev:cms'",
+    "serve:systemjs": "yarn build:mfe:geogrid && yarn build:mfe:bg-remover && yarn build:mfe:focus && concurrently -k -n geogrid,bgremover,focus,cms -c blue,green,magenta,cyan 'npx http-server mfes/geogrid/dist -p 3001 --cors' 'npx http-server mfes/bg-remover/dist -p 3002 --cors' 'npx http-server mfes/focus/dist -p 3003 --cors' 'yarn start:cms'"
   },
   "dependencies": {
     "concurrently": "^9.1.2"

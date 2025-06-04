@@ -1,120 +1,122 @@
 "use client";
-import Image from "next/image";
-import { signIn, signOut, useSession } from "next-auth/react";
-import React from "react";
+import { Hero } from "./components/Hero";
+import { Footer } from "./components/Footer";
+import { Works } from "./components/Works";
+import { Services } from "./components/Services";
+import { Media } from "./components/Media";
+import { Description } from "./components/Description";
+import { Contacts } from "./components/Contacts";
+import { useStrapiCollections } from "../../hooks/useStrapi";
+import {
+  StrapiContentType,
+  StrapiHero,
+  StrapiWork,
+  StrapiService,
+  StrapiMedia,
+  StrapiDescription,
+  StrapiContact,
+} from "../../types/strapi-content";
+import { extractArray } from "@/utils/extractArray";
+
+const featureFlags = {
+  showHero: true,
+  showWorks: true,
+  showServices: true,
+  showMedia: true,
+  showDescription: true,
+  showContacts: true,
+};
 
 export function Home() {
-  const { data: session, status } = useSession();
+  const contentTypes: StrapiContentType[] = [
+    StrapiContentType.HERO,
+    StrapiContentType.WORKS,
+    StrapiContentType.SERVICES,
+    StrapiContentType.MEDIAS,
+    StrapiContentType.DESCRIPTION,
+    StrapiContentType.CONTACTS,
+  ];
+
+  const [
+    heroQuery,
+    worksQuery,
+    servicesQuery,
+    mediasQuery,
+    descriptionQuery,
+    contactsQuery,
+  ] = useStrapiCollections(contentTypes);
+
+  if (
+    heroQuery.isLoading ||
+    worksQuery.isLoading ||
+    servicesQuery.isLoading ||
+    mediasQuery.isLoading ||
+    descriptionQuery.isLoading ||
+    contactsQuery.isLoading
+  ) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        Loading...
+      </div>
+    );
+  }
+
+  const works = extractArray<StrapiWork>(worksQuery.data?.data);
+  const services = extractArray<StrapiService>(servicesQuery.data?.data);
+  const medias = extractArray<StrapiMedia>(mediasQuery.data?.data);
+  const contacts = extractArray<StrapiContact>(contactsQuery.data?.data);
+  const hero = heroQuery.data?.data as StrapiHero | undefined;
+  const description = descriptionQuery.data?.data as
+    | StrapiDescription
+    | undefined;
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <header style={{ display: "flex", justifyContent: "flex-end", gap: 16 }}>
-        {status === "loading" && <span>Carregando sessão...</span>}
-        {!session && status !== "loading" && (
-          <button onClick={() => signIn()}>Entrar</button>
-        )}
-        {session && (
-          <>
-            <span>Bem-vindo, {session.user?.name || session.user?.email}</span>
-            <button onClick={() => signOut()}>Sair</button>
-          </>
-        )}
-      </header>
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="min-h-screen flex flex-col bg-background text-foreground font-[family-name:var(--font-geist-sans)]">
+      {featureFlags.showHero && hero && (
+        <Hero
+          name={hero.name}
+          title={hero.title}
+          subtitle={hero.subtitle}
+          image={
+            Array.isArray(hero.image)
+              ? hero.image[0]?.url || ""
+              : hero.image?.url || ""
+          }
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      )}
+      {featureFlags.showDescription && description && (
+        <Description text={description.text} />
+      )}
+      {featureFlags.showWorks && works.length > 0 && (
+        <Works
+          works={works
+            .map((w) => ({
+              ...w,
+              image: w.image?.url || "",
+              caseStudy: Array.isArray(w.caseStudy)
+                ? JSON.stringify(w.caseStudy)
+                : w.caseStudy,
+            }))
+            .sort((a, b) => (a.order || 0) - (b.order || 0))}
+        />
+      )}
+      {featureFlags.showServices && services.length > 0 && (
+        <Services services={services} />
+      )}
+      {featureFlags.showMedia && medias.length > 0 && (
+        <Media
+          videos={medias
+            .filter((m) => m.type === "video")
+            .map((m) => ({ ...m, url: m.url || "" }))}
+          writings={medias
+            .filter((m) => m.type === "writing")
+            .map((m) => ({ ...m, url: m.url || "" }))}
+        />
+      )}
+      {featureFlags.showContacts && contacts.length > 0 && (
+        <Contacts contacts={contacts} />
+      )}
+      <Footer />
     </div>
   );
 }
