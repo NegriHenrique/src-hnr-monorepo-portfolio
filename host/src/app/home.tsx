@@ -87,8 +87,6 @@ export function Home() {
   const changeLanguage = () => {
     // Implement language change logic here
     i18n.changeLanguage("en");
-
-    console.log("Change language function called");
   };
 
   return (
