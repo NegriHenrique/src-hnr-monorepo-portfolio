@@ -1,14 +1,13 @@
 import { useTranslation } from "react-i18next";
 import { StrapiService } from "../../../../types/strapi-content";
 
-export type Service = {
-  title: string;
-  description: string;
-  icon: string;
-};
+export type Service = Pick<
+  StrapiService,
+  "title" | "icon" | "description" | "order"
+>;
 
 export type ServicesProps = {
-  services: StrapiService[];
+  services: Service[];
 };
 
 export function Services({ services }: ServicesProps) {

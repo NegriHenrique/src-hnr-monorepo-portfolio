@@ -1,16 +1,11 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { Services, ServicesProps } from ".";
+import { servicesData } from "@/app/_mocks/service.mock";
 
 describe("Services", () => {
   const props: ServicesProps = {
-    services: [
-      {
-        title: "Website Design",
-        description: "Design de interfaces modernas, responsivas e acessíveis.",
-        icon: "💻",
-      },
-    ],
+    services: servicesData,
   };
 
   it("renderiza o título do serviço", () => {
