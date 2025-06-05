@@ -11,7 +11,6 @@ export function Footer() {
         id="language"
         onChange={(e) => {
           i18n.changeLanguage(e.target.value);
-          console.log("language", i18n.language);
         }}
       >
         <option value="en">English</option>
