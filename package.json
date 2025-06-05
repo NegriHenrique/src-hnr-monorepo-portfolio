@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "workspaces": [
     "host",
+    "portfolio",
     "mfes/geogrid",
     "mfes/bg-remover",
     "mfes/focus",
@@ -37,11 +38,18 @@
     "serve:systemjs": "yarn build:mfe:geogrid && yarn build:mfe:bg-remover && yarn build:mfe:focus && concurrently -k -n geogrid,bgremover,focus,cms -c blue,green,magenta,cyan 'npx http-server mfes/geogrid/dist -p 3001 --cors' 'npx http-server mfes/bg-remover/dist -p 3002 --cors' 'npx http-server mfes/focus/dist -p 3003 --cors' 'yarn start:cms'"
   },
   "dependencies": {
-    "concurrently": "^9.1.2"
+    "@storybook/nextjs": "^9.0.5",
+    "@storybook/react": "^9.0.5",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.15.29",
+    "concurrently": "^9.1.2",
+    "react-i18next": "^15.5.2"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.5.0",
     "http-server": "^14.1.1",
     "vite": "^5.2.0"
-  }
+  },
+  "packageManager": "yarn@4.9.2"
 }
