@@ -1,5 +1,6 @@
 import { StrapiHero } from "../../../../types/strapi-content";
 import { useTranslation } from "react-i18next";
+import { Title } from "shared-ui";
 
 export type HeroProps = Pick<StrapiHero, "name" | "title" | "subtitle"> & {
   image: string | null;
@@ -16,9 +17,7 @@ export function Hero({ name, title, subtitle, image }: HeroProps) {
         height={160}
         className="rounded-full border-2 border-black/10 dark:border-white/10 shadow-xl mb-6 object-cover"
       />
-      <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight text-black dark:text-white leading-tight mb-2">
-        {name || t("greeting")}
-      </h1>
+      <Title variant="presetH1">asdas das{name || t("greeting")}</Title>
       <h2 className="text-2xl sm:text-3xl font-medium text-zinc-700 dark:text-zinc-300 mb-2">
         {title || t("role")}
       </h2>
