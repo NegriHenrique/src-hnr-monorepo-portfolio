@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Contacts, ContactsProps } from ".";
-import { contactsData } from "../../_mocks/contract.mock";
+import { contactsData } from "../../_mocks/contact.mock";
 
 const meta: Meta<typeof Contacts> = {
   title: "Portfolio/Contacts",
