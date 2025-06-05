@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "greeting": "Hi, I'm Henrique Negri",
+    "role": "Full Stack Developer & Consultant",
+    "cta": "Get in touch"
+  },
+  "works": {
+    "section_title": "Featured Projects",
+    "card_example_title": "Example Project",
+    "card_example_description": "Brief description of the project and technologies used.",
+    "see_details": "See details",
+    "case_study": "Case study",
+    "see_online": "See online"
+  },
+  "services": {
+    "section_title": "Services"
+  },
+  "clients": {
+    "section_title": "Clients"
+  },
+  "media": {
+    "section_title": "Videos & Writings",
+    "video": "Video",
+    "writing": "Writing"
+  },
+  "contacts": {
+    "section_title": "Contact"
+  },
+  "description": {
+    "about": "I'm passionate about creating digital products that combine design, technology, and business. I work as a Product Designer and Frontend Engineer, helping companies turn ideas into high-impact digital experiences."
+  },
+  "footer": {
+    "copyright": "© {{year}} Henrique Negri. All rights reserved."
+  }
+}

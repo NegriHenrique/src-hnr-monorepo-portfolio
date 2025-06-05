@@ -125,6 +125,20 @@ export type StrapiContact = {
   localizations?: StrapiLocalization[];
 };
 
+export type StrapiClient = {
+  id: number;
+  documentId: string;
+  name: string;
+  logo: string | { url: string };
+  link?: string;
+  order?: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  localizations?: StrapiLocalization[];
+};
+
 export type StrapiContentTypes = {
   hero: StrapiHero;
   works: StrapiWork[];
@@ -132,6 +146,7 @@ export type StrapiContentTypes = {
   medias: StrapiMedia[];
   description: StrapiDescription;
   contacts: StrapiContact[];
+  clients: StrapiClient[];
 };
 
 export type StrapiContentResponseSingle<T> = {
@@ -149,6 +164,7 @@ export enum StrapiContentType {
   MEDIAS = "medias",
   DESCRIPTION = "description",
   CONTACTS = "contacts",
+  CLIENTS = "clients", // Adicionado para suportar a collection de clientes
 }
 
 export type StrapiContentResponse<T extends StrapiContentType> = {

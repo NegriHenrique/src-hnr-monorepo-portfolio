@@ -1,36 +1,86 @@
-export const worksData = [
-  {
-    id: 1,
-    title: "Microfrontend BG Remover",
-    description:
-      "Estudo de caso sobre arquitetura de microfrontends para processamento de imagens.",
-    image: "/file.svg",
-    link: "/bg-remover",
-    caseStudy: "/cases/bg-remover",
-    // Para CMS: adicionar campos 'order', 'enabled', 'tags', 'date', 'client', 'techs' se desejar detalhamento
-  },
-  {
-    id: 2,
-    title: "Focus App",
-    description: "Aplicativo de produtividade com foco em UX e performance.",
-    image: "/window.svg",
-    link: "/focus",
-    caseStudy: "/cases/focus",
-  },
-  {
-    id: 3,
-    title: "Geogrid Platform",
-    description: "Plataforma de visualização geográfica em tempo real.",
-    image: "/globe.svg",
-    link: "/geogrid",
-    caseStudy: "/cases/geogrid",
-  },
-  {
-    id: 4,
-    title: "Shared UI Kit",
-    description: "Design system compartilhado para múltiplos produtos.",
-    image: "/vercel.svg",
-    link: "https://www.chromatic.com/library?appId=6838904ee52ae0456e7420ba",
-    caseStudy: "/cases/uikit",
-  },
-];
+import { WorksProps } from "../components/Works";
+
+export const worksData: WorksProps = {
+  works: [
+    {
+      id: 1,
+      title: "Microfrontend BG Remover",
+      description:
+        "Estudo de caso sobre arquitetura de microfrontends para processamento de imagens.",
+      image: {
+        id: 1,
+        documentId: "",
+        provider_metadata: null,
+        createdAt: "2024-01-01T00:00:00.000Z",
+        updatedAt: "2024-01-01T00:00:00.000Z",
+        publishedAt: "2024-01-01T00:00:00.000Z",
+        url: "/file.svg",
+        alternativeText: "Microfrontend BG Remover image",
+        caption: "",
+        width: 100,
+        height: 100,
+        formats: {},
+        provider: "",
+        previewUrl: null,
+        mime: "image/svg+xml",
+        size: 1,
+        hash: "file_svg",
+        ext: ".svg",
+        name: "file.svg",
+      },
+      link: "/bg-remover",
+      caseStudy: [
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "/cases/bg-remover",
+            },
+          ],
+        },
+      ],
+      order: 1,
+    },
+    {
+      id: 2,
+      title: "Microfrontend BG Remover",
+      description:
+        "Estudo de caso sobre arquitetura de microfrontends para processamento de imagens.",
+      image: {
+        id: 2,
+        documentId: "",
+        provider_metadata: null,
+        createdAt: "2024-01-01T00:00:00.000Z",
+        updatedAt: "2024-01-01T00:00:00.000Z",
+        publishedAt: "2024-01-01T00:00:00.000Z",
+        url: "/file.svg",
+        alternativeText: "Microfrontend BG Remover image",
+        caption: "",
+        width: 100,
+        height: 100,
+        formats: {},
+        provider: "",
+        previewUrl: null,
+        mime: "image/svg+xml",
+        size: 1,
+        hash: "file_svg",
+        ext: ".svg",
+        name: "file.svg",
+      },
+      link: "/bg-remover",
+      caseStudy: [
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "/cases/bg-remover",
+            },
+          ],
+        },
+      ],
+      order: 2,
+    },
+  ],
+};

@@ -1,11 +1,4 @@
 "use client";
-import { Hero } from "./components/Hero";
-import { Footer } from "./components/Footer";
-import { Works } from "./components/Works";
-import { Services } from "./components/Services";
-import { Media } from "./components/Media";
-import { Description } from "./components/Description";
-import { Contacts } from "./components/Contacts";
 import { useStrapiCollections } from "../../hooks/useStrapi";
 import {
   StrapiContentType,
@@ -15,8 +8,20 @@ import {
   StrapiMedia,
   StrapiDescription,
   StrapiContact,
+  StrapiClient,
 } from "../../types/strapi-content";
 import { extractArray } from "@/utils/extractArray";
+import {
+  Contacts,
+  Description,
+  Footer,
+  Hero,
+  Media,
+  Services,
+  Works,
+  Clients,
+} from "./components";
+import { useTranslation } from "react-i18next";
 
 const featureFlags = {
   showHero: true,
@@ -28,6 +33,9 @@ const featureFlags = {
 };
 
 export function Home() {
+  const { i18n } = useTranslation();
+  const locale = i18n.language === "en" ? "en" : "pt-BR";
+
   const contentTypes: StrapiContentType[] = [
     StrapiContentType.HERO,
     StrapiContentType.WORKS,
@@ -35,6 +43,7 @@ export function Home() {
     StrapiContentType.MEDIAS,
     StrapiContentType.DESCRIPTION,
     StrapiContentType.CONTACTS,
+    StrapiContentType.CLIENTS,
   ];
 
   const [
@@ -44,7 +53,8 @@ export function Home() {
     mediasQuery,
     descriptionQuery,
     contactsQuery,
-  ] = useStrapiCollections(contentTypes);
+    clientsQuery,
+  ] = useStrapiCollections(contentTypes, locale);
 
   if (
     heroQuery.isLoading ||
@@ -52,7 +62,8 @@ export function Home() {
     servicesQuery.isLoading ||
     mediasQuery.isLoading ||
     descriptionQuery.isLoading ||
-    contactsQuery.isLoading
+    contactsQuery.isLoading ||
+    clientsQuery.isLoading
   ) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -60,6 +71,8 @@ export function Home() {
       </div>
     );
   }
+
+  const strapiImagePrefix = process.env.NEXT_PUBLIC_STRAPI_IMAGE_PREFIX || "";
 
   const works = extractArray<StrapiWork>(worksQuery.data?.data);
   const services = extractArray<StrapiService>(servicesQuery.data?.data);
@@ -69,9 +82,18 @@ export function Home() {
   const description = descriptionQuery.data?.data as
     | StrapiDescription
     | undefined;
+  const clients = extractArray<StrapiClient>(clientsQuery.data?.data);
+
+  const changeLanguage = () => {
+    // Implement language change logic here
+    i18n.changeLanguage("en");
+
+    console.log("Change language function called");
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-[family-name:var(--font-geist-sans)]">
+      <button onClick={changeLanguage}>mudar linguagem</button>
       {featureFlags.showHero && hero && (
         <Hero
           name={hero.name}
@@ -79,40 +101,20 @@ export function Home() {
           subtitle={hero.subtitle}
           image={
             Array.isArray(hero.image)
-              ? hero.image[0]?.url || ""
-              : hero.image?.url || ""
+              ? strapiImagePrefix + hero.image[0]?.url || ""
+              : strapiImagePrefix + hero.image?.url || ""
           }
         />
       )}
       {featureFlags.showDescription && description && (
         <Description text={description.text} />
       )}
-      {featureFlags.showWorks && works.length > 0 && (
-        <Works
-          works={works
-            .map((w) => ({
-              ...w,
-              image: w.image?.url || "",
-              caseStudy: Array.isArray(w.caseStudy)
-                ? JSON.stringify(w.caseStudy)
-                : w.caseStudy,
-            }))
-            .sort((a, b) => (a.order || 0) - (b.order || 0))}
-        />
-      )}
+      {featureFlags.showWorks && works.length > 0 && <Works works={works} />}
+      {clients.length > 0 && <Clients clients={clients} />}
       {featureFlags.showServices && services.length > 0 && (
         <Services services={services} />
       )}
-      {featureFlags.showMedia && medias.length > 0 && (
-        <Media
-          videos={medias
-            .filter((m) => m.type === "video")
-            .map((m) => ({ ...m, url: m.url || "" }))}
-          writings={medias
-            .filter((m) => m.type === "writing")
-            .map((m) => ({ ...m, url: m.url || "" }))}
-        />
-      )}
+      {featureFlags.showMedia && medias.length > 0 && <Media medias={medias} />}
       {featureFlags.showContacts && contacts.length > 0 && (
         <Contacts contacts={contacts} />
       )}

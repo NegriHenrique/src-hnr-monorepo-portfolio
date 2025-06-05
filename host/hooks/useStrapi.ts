@@ -4,14 +4,15 @@ import { StrapiContentType } from "../types/strapi-content";
 import { fetchCollection, fetchSingleBySlug } from "@/lib/strapi-fetchers";
 
 export function useStrapiCollections<T extends StrapiContentType[]>(
-  contentTypes: T
+  contentTypes: T,
+  locale: string
 ): {
   [K in keyof T]: UseQueryResult<StrapiContentListResponse<T[K]>, Error>;
 } {
   const results = useQueries({
     queries: contentTypes.map((type) => ({
-      queryKey: [type],
-      queryFn: () => fetchCollection(type),
+      queryKey: [type, locale],
+      queryFn: () => fetchCollection(type, locale),
     })),
   });
 
@@ -20,21 +21,25 @@ export function useStrapiCollections<T extends StrapiContentType[]>(
   };
 }
 
-export function useStrapiCollection(contentType: StrapiContentType) {
+export function useStrapiCollection(
+  contentType: StrapiContentType,
+  locale: string
+) {
   return useQuery({
-    queryKey: [contentType],
-    queryFn: () => fetchCollection(contentType),
+    queryKey: [contentType, locale],
+    queryFn: () => fetchCollection(contentType, locale),
   });
 }
 
 export function useStrapiSingle(
   contentType: StrapiContentType,
   slug: string,
+  locale: string,
   enabled = true
 ) {
   return useQuery({
-    queryKey: [contentType, slug],
-    queryFn: () => fetchSingleBySlug(contentType, slug),
+    queryKey: [contentType, slug, locale],
+    queryFn: () => fetchSingleBySlug(contentType, slug, locale),
     enabled,
   });
 }

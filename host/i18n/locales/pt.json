@@ -1,3 +1,35 @@
 {
-  "title": "Teste titulo"
+  "hero": {
+    "greeting": "Olá, eu sou Henrique Negri",
+    "role": "Desenvolvedor Full Stack & Consultor",
+    "cta": "Entre em contato"
+  },
+  "works": {
+    "section_title": "Projetos em Destaque",
+    "card_example_title": "Projeto Exemplo",
+    "card_example_description": "Breve descrição do projeto e tecnologias usadas.",
+    "see_details": "Ver detalhes",
+    "case_study": "Estudo de caso",
+    "see_online": "Ver online"
+  },
+  "services": {
+    "section_title": "Serviços"
+  },
+  "clients": {
+    "section_title": "Clientes"
+  },
+  "media": {
+    "section_title": "Vídeos & Escritas",
+    "video": "Vídeo",
+    "writing": "Escrita"
+  },
+  "contacts": {
+    "section_title": "Contato"
+  },
+  "description": {
+    "about": "Sou apaixonado por criar produtos digitais que unem design, tecnologia e negócios. Atuo como Product Designer e Frontend Engineer, ajudando empresas a transformar ideias em experiências digitais de alto impacto."
+  },
+  "footer": {
+    "copyright": "© {{year}} Henrique Negri. Todos os direitos reservados."
+  }
 }
