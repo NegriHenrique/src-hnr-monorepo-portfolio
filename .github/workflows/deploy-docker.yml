@@ -25,25 +25,25 @@ jobs:
           echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
       - name: Build e push Host
         run: |
-          docker build -t ghcr.io/$REPO/host:latest ./host
+          docker build -t ghcr.io/$REPO/host:latest -f ./host/Dockerfile .
           docker push ghcr.io/$REPO/host:latest
       - name: Build e push GeoGrid
         run: |
-          docker build -t ghcr.io/$REPO/geogrid:latest ./mfes/geogrid
+          docker build -t ghcr.io/$REPO/geogrid:latest -f ./mfes/geogrid/Dockerfile .
           docker push ghcr.io/$REPO/geogrid:latest
       - name: Build e push BG-Remover
         run: |
-          docker build -t ghcr.io/$REPO/bg-remover:latest ./mfes/bg-remover
+          docker build -t ghcr.io/$REPO/bg-remover:latest -f ./mfes/bg-remover/Dockerfile .
           docker push ghcr.io/$REPO/bg-remover:latest
       - name: Build e push Focus
         run: |
-          docker build -t ghcr.io/$REPO/focus:latest ./mfes/focus
+          docker build -t ghcr.io/$REPO/focus:latest -f ./mfes/focus/Dockerfile .
           docker push ghcr.io/$REPO/focus:latest
       - name: Build e push NestJS
         run: |
-          docker build -t ghcr.io/$REPO/nestjs:latest ./backend/nestjs
+          docker build -t ghcr.io/$REPO/nestjs:latest -f ./backend/nestjs/Dockerfile .
           docker push ghcr.io/$REPO/nestjs:latest
       - name: Build e push FastAPI
         run: |
-          docker build -t ghcr.io/$REPO/fastapi:latest ./backend/fastapi
+          docker build -t ghcr.io/$REPO/fastapi:latest -f ./backend/fastapi/Dockerfile .
           docker push ghcr.io/$REPO/fastapi:latest
