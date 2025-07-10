@@ -2,7 +2,7 @@ name: Deploy Docker Images
 
 on:
   push:
-    branches: [main]
+    branches: [main, feature/test-deploy]
 
 jobs:
   build-and-push:
@@ -27,23 +27,4 @@ jobs:
         run: |
           docker build -t ghcr.io/$REPO/host:latest -f ./host/Dockerfile .
           docker push ghcr.io/$REPO/host:latest
-      - name: Build e push GeoGrid
-        run: |
-          docker build -t ghcr.io/$REPO/geogrid:latest -f ./mfes/geogrid/Dockerfile .
-          docker push ghcr.io/$REPO/geogrid:latest
-      - name: Build e push BG-Remover
-        run: |
-          docker build -t ghcr.io/$REPO/bg-remover:latest -f ./mfes/bg-remover/Dockerfile .
-          docker push ghcr.io/$REPO/bg-remover:latest
-      - name: Build e push Focus
-        run: |
-          docker build -t ghcr.io/$REPO/focus:latest -f ./mfes/focus/Dockerfile .
-          docker push ghcr.io/$REPO/focus:latest
-      - name: Build e push NestJS
-        run: |
-          docker build -t ghcr.io/$REPO/nestjs:latest -f ./backend/nestjs/Dockerfile .
-          docker push ghcr.io/$REPO/nestjs:latest
-      - name: Build e push FastAPI
-        run: |
-          docker build -t ghcr.io/$REPO/fastapi:latest -f ./backend/fastapi/Dockerfile .
-          docker push ghcr.io/$REPO/fastapi:latest
+      # (Deploy do shared-ui via Docker removido, pois deploy é feito via Chromatic/Storybook)
