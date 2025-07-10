@@ -1,4 +1,5 @@
 [![codecov](https://codecov.io/gh/SEU_USUARIO/SEU_REPO/branch/main/graph/badge.svg)](https://codecov.io/gh/SEU_USUARIO/SEU_REPO)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7139dae6-708f-466b-a72c-fffd2c349182/deploy-status)](https://app.netlify.com/projects/henrique-negri/deploys)
 
 # Checklist de Qualidade e CI/CD
 
