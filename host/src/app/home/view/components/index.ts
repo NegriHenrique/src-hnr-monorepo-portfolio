@@ -6,3 +6,4 @@ export { Media } from "./Media";
 export { Services } from "./Services";
 export { Works } from "./Works";
 export { Clients } from "./Clients";
+export { About } from "./About";

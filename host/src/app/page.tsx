@@ -4,7 +4,7 @@ import { SessionProvider } from "next-auth/react";
 import { useState } from "react";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../../i18n/i18n";
-import { Home } from "./home";
+import Home from "./home/index";
 
 export default function Page() {
   const [queryClient] = useState(() => new QueryClient());

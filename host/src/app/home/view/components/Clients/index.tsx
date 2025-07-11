@@ -1,5 +1,5 @@
 import React from "react";
-import { StrapiClient } from "../../../../types/strapi-content";
+import { StrapiClient } from "../../../../../../types/strapi-content";
 import { useTranslation } from "react-i18next";
 
 export type Client = StrapiClient;

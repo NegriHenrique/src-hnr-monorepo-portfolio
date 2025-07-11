@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Hero, HeroProps } from ".";
-import { heroData } from "../../_mocks/hero.mock";
+import { heroData } from "../../../../_mocks/hero.mock";
 
 const meta: Meta<typeof Hero> = {
   title: "Portfolio/Hero",

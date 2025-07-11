@@ -1,4 +1,4 @@
-import { StrapiContact } from "../../../../types/strapi-content";
+import { StrapiContact } from "../../../../../../types/strapi-content";
 import { useTranslation } from "react-i18next";
 
 export type Contact = {

@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { Hero, HeroProps } from ".";
-import { heroData } from "../../_mocks/hero.mock";
+import { heroData } from "../../../../_mocks/hero.mock";
 
 describe("Hero", () => {
   const props: HeroProps = heroData;

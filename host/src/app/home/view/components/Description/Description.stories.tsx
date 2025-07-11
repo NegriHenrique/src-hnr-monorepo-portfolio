@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Description, DescriptionProps } from ".";
-import { descriptionData } from "../../_mocks/description.mock";
+import { descriptionData } from "../../../../_mocks/description.mock";
 
 const meta: Meta<typeof Description> = {
   title: "Portfolio/Description",

@@ -1,4 +1,4 @@
-import { WorksProps } from "../components/Works";
+import { WorksProps } from "../home/view/components/Works";
 
 export const worksData: WorksProps = {
   works: [

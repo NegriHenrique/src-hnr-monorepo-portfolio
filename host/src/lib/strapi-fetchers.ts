@@ -1,16 +1,19 @@
 import { getStrapiQueryMap, STRAPI_BASE_URL } from "./strapi-config";
 import { StrapiContentType } from "../../types/strapi-content";
+import axios from "axios";
 
-export async function fetchCollection(
+const API = process.env.NEXT_PUBLIC_STRAPI_URL;
+
+export function fetchCollection(
   contentType: StrapiContentType,
-  locale: string
+  locale: string,
+  populate: string[] = []
 ) {
-  const query = getStrapiQueryMap(locale)[contentType].list;
-  const res = await fetch(`${STRAPI_BASE_URL}/${contentType}${query}`);
-  if (!res.ok) throw new Error("Failed to fetch collection");
-  return res.json();
+  const populateParams = populate.map((p) => `populate[]=${p}`).join("&");
+  return axios
+    .get(`${API}/${contentType}?locale=${locale}&${populateParams}`)
+    .then((res) => res.data);
 }
-
 export async function fetchSingleBySlug(
   contentType: StrapiContentType,
   slug: string,

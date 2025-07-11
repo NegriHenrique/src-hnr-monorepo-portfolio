@@ -1,4 +1,4 @@
-import { StrapiMedia } from "../../../../types/strapi-content";
+import { StrapiMedia } from "../../../../../../types/strapi-content";
 import { useTranslation } from "react-i18next";
 
 export type MediaItem = {

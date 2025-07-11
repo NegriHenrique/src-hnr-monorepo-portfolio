@@ -1,4 +1,4 @@
-import type { MediaProps } from "../components/Media";
+import type { MediaProps } from "../home/view/components/Media";
 
 export const mediaData: MediaProps = {
   medias: [

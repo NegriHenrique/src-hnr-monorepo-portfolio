@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { Contacts, ContactsProps } from ".";
-import { contactsData } from "../../_mocks/contact.mock";
+import { contactsData } from "../../../../_mocks/contact.mock";
 
 describe("Contacts", () => {
   const props: ContactsProps = {

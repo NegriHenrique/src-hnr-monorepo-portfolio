@@ -1,4 +1,4 @@
-import { StrapiDescription } from "../../../../types/strapi-content";
+import { StrapiDescription } from "../../../../../../types/strapi-content";
 import { useTranslation } from "react-i18next";
 
 export type DescriptionProps = Pick<StrapiDescription, "text">;
