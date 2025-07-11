@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "services",
+  "collectionName": "tags",
   "info": {
-    "singularName": "service",
-    "pluralName": "services",
-    "displayName": "Service"
+    "singularName": "tag",
+    "pluralName": "tags",
+    "displayName": "Tag"
   },
   "options": {
     "draftAndPublish": true
@@ -15,7 +15,7 @@
     }
   },
   "attributes": {
-    "title": {
+    "name": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -24,24 +24,20 @@
       },
       "required": true
     },
-    "description": {
-      "type": "text",
+    "slug": {
+      "type": "uid",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "maxLength": 255,
-      "required": true
+      "targetField": "name"
     },
-    "order": {
-      "type": "integer",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "min": 0
+    "works": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::work.work",
+      "inversedBy": "tags"
     },
     "icon": {
       "type": "component",

@@ -373,6 +373,169 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutAbout extends Struct.SingleTypeSchema {
+  collectionName: 'abouts';
+  info: {
+    displayName: 'About';
+    pluralName: 'abouts';
+    singularName: 'about';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    headline: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    introText: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'>;
+    processes: Schema.Attribute.DynamicZone<['about.about-process']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCaseStudyCaseStudy extends Struct.CollectionTypeSchema {
+  collectionName: 'case_studies';
+  info: {
+    displayName: 'CaseStudy';
+    pluralName: 'case-studies';
+    singularName: 'case-study';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    challenge: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    colorDescription: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    colors: Schema.Attribute.Component<'case.case-case-color', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    galleryDesktop: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    galleryMobile: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    heroImage: Schema.Attribute.Media<'images' | 'videos'>;
+    impact: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    initialSketches: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    initialSketchesImage: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::case-study.case-study'
+    >;
+    publishDate: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    quotes: Schema.Attribute.Component<'case.case-case-quote', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    solution: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    stacks: Schema.Attribute.Component<'case.case-case-stack', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiClientClient extends Struct.CollectionTypeSchema {
   collectionName: 'clients';
   info: {
@@ -430,6 +593,7 @@ export interface ApiClientClient extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    works: Schema.Attribute.Relation<'manyToMany', 'api::work.work'>;
   };
 }
 
@@ -497,43 +661,6 @@ export interface ApiContactContact extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiDescriptionDescription extends Struct.SingleTypeSchema {
-  collectionName: 'descriptions';
-  info: {
-    displayName: 'Description';
-    pluralName: 'descriptions';
-    singularName: 'description';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::description.description'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    text: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiHeroHero extends Struct.SingleTypeSchema {
   collectionName: 'heroes';
   info: {
@@ -553,7 +680,7 @@ export interface ApiHeroHero extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos', true> &
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -649,6 +776,7 @@ export interface ApiMediaMedia extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    work: Schema.Attribute.Relation<'manyToOne', 'api::work.work'>;
   };
 }
 
@@ -681,8 +809,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 255;
       }>;
-    icon: Schema.Attribute.String &
-      Schema.Attribute.Required &
+    icon: Schema.Attribute.Component<'global.global-icon', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -719,6 +846,54 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiTagTag extends Struct.CollectionTypeSchema {
+  collectionName: 'tags';
+  info: {
+    displayName: 'Tag';
+    pluralName: 'tags';
+    singularName: 'tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    icon: Schema.Attribute.Component<'global.global-icon', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    works: Schema.Attribute.Relation<'manyToMany', 'api::work.work'>;
+  };
+}
+
 export interface ApiWorkWork extends Struct.CollectionTypeSchema {
   collectionName: 'works';
   info: {
@@ -735,12 +910,11 @@ export interface ApiWorkWork extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    caseStudy: Schema.Attribute.Blocks &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    case_study: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::case-study.case-study'
+    >;
+    clients: Schema.Attribute.Relation<'manyToMany', 'api::client.client'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -780,6 +954,7 @@ export interface ApiWorkWork extends Struct.CollectionTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::work.work'>;
+    media: Schema.Attribute.Relation<'oneToMany', 'api::media.media'>;
     order: Schema.Attribute.Integer &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -793,13 +968,13 @@ export interface ApiWorkWork extends Struct.CollectionTypeSchema {
         number
       >;
     publishedAt: Schema.Attribute.DateTime;
-    tags: Schema.Attribute.JSON &
-      Schema.Attribute.Required &
+    slug: Schema.Attribute.UID<'title'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -810,6 +985,13 @@ export interface ApiWorkWork extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    worktype: Schema.Attribute.Enumeration<['programming', 'ux', 'both']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'both'>;
   };
 }
 
@@ -1322,12 +1504,14 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about.about': ApiAboutAbout;
+      'api::case-study.case-study': ApiCaseStudyCaseStudy;
       'api::client.client': ApiClientClient;
       'api::contact.contact': ApiContactContact;
-      'api::description.description': ApiDescriptionDescription;
       'api::hero.hero': ApiHeroHero;
       'api::media.media': ApiMediaMedia;
       'api::service.service': ApiServiceService;
+      'api::tag.tag': ApiTagTag;
       'api::work.work': ApiWorkWork;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_case_case_case_quotes",
+  "info": {
+    "displayName": "case.case-quote"
+  },
+  "options": {},
+  "attributes": {
+    "quote": {
+      "type": "string",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "string"
+    },
+    "authorImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

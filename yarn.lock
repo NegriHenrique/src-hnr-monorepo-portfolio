@@ -1661,6 +1661,7 @@ __metadata:
     react: "npm:^18.0.0"
     react-dom: "npm:^18.0.0"
     react-router-dom: "npm:^6.0.0"
+    strapi-advanced-uuid: "npm:^2.1.1"
     styled-components: "npm:^6.0.0"
     typescript: "npm:^5"
   languageName: unknown
@@ -2604,12 +2605,44 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@formatjs/ecma402-abstract@npm:2.3.4":
+  version: 2.3.4
+  resolution: "@formatjs/ecma402-abstract@npm:2.3.4"
+  dependencies:
+    "@formatjs/fast-memoize": "npm:2.2.7"
+    "@formatjs/intl-localematcher": "npm:0.6.1"
+    decimal.js: "npm:^10.4.3"
+    tslib: "npm:^2.8.0"
+  checksum: 10c0/2644bc618a34dc610ef9691281eeb45ae6175e6982cf19f1bd140672fc95c748747ce3c85b934649ea7e4a304f7ae0060625fd53d5df76f92ca3acf743e1eb0a
+  languageName: node
+  linkType: hard
+
 "@formatjs/fast-memoize@npm:2.2.0":
   version: 2.2.0
   resolution: "@formatjs/fast-memoize@npm:2.2.0"
   dependencies:
     tslib: "npm:^2.4.0"
   checksum: 10c0/ae88c5a93b96235aba4bd9b947d0310d2ec013687a99133413361b24122b5cdea8c9bf2e04a4a2a8b61f1f4ee5419ef6416ca4796554226b5050e05a9ce6ef49
+  languageName: node
+  linkType: hard
+
+"@formatjs/fast-memoize@npm:2.2.7":
+  version: 2.2.7
+  resolution: "@formatjs/fast-memoize@npm:2.2.7"
+  dependencies:
+    tslib: "npm:^2.8.0"
+  checksum: 10c0/f5eabb0e4ab7162297df8252b4cfde194b23248120d9df267592eae2be2d2f7c4f670b5a70523d91b4ecdc35d40e65823bb8eeba8dd79fbf8601a972bf3b8866
+  languageName: node
+  linkType: hard
+
+"@formatjs/icu-messageformat-parser@npm:2.11.2":
+  version: 2.11.2
+  resolution: "@formatjs/icu-messageformat-parser@npm:2.11.2"
+  dependencies:
+    "@formatjs/ecma402-abstract": "npm:2.3.4"
+    "@formatjs/icu-skeleton-parser": "npm:1.8.14"
+    tslib: "npm:^2.8.0"
+  checksum: 10c0/a121f2d2c6b36a1632ffd64c3545e2500c8ee0f7fee5db090318c035d635c430ab123faedb5d000f18d9423a7b55fbf670b84e2e2dd72cc307a38aed61d3b2e0
   languageName: node
   linkType: hard
 
@@ -2631,6 +2664,16 @@ __metadata:
     "@formatjs/ecma402-abstract": "npm:1.18.2"
     tslib: "npm:^2.4.0"
   checksum: 10c0/10956732d70cc67049d216410b5dc3ef048935d1ea2ae76f5755bb9d0243af37ddeabd5d140ddbf5f6c7047068c3d02a05f93c68a89cedfaf7488d5062885ea4
+  languageName: node
+  linkType: hard
+
+"@formatjs/icu-skeleton-parser@npm:1.8.14":
+  version: 1.8.14
+  resolution: "@formatjs/icu-skeleton-parser@npm:1.8.14"
+  dependencies:
+    "@formatjs/ecma402-abstract": "npm:2.3.4"
+    tslib: "npm:^2.8.0"
+  checksum: 10c0/a1807ed6e90b8a2e8d0e5b5125e6f9a2c057d3cff377fb031d2333af7cfaa6de4ed3a15c23da7294d4c3557f8b28b2163246434a19720f26b5db0497d97e9b58
   languageName: node
   linkType: hard
 
@@ -2665,6 +2708,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@formatjs/intl-localematcher@npm:0.6.1":
+  version: 0.6.1
+  resolution: "@formatjs/intl-localematcher@npm:0.6.1"
+  dependencies:
+    tslib: "npm:^2.8.0"
+  checksum: 10c0/bacbedd508519c1bb5ca2620e89dc38f12101be59439aa14aa472b222915b462cb7d679726640f6dcf52a05dd218b5aa27ccd60f2e5010bb96f1d4929848cde0
+  languageName: node
+  linkType: hard
+
 "@formatjs/intl@npm:2.10.0":
   version: 2.10.0
   resolution: "@formatjs/intl@npm:2.10.0"
@@ -2682,6 +2734,24 @@ __metadata:
     typescript:
       optional: true
   checksum: 10c0/7566038b011116cee7069165a25836b3fb687948e61b041809a9d978ac6c0882ae8d81a624a415cfb8e43852d097cd1cbc3c6707e717928e39b75c252491a712
+  languageName: node
+  linkType: hard
+
+"@formatjs/intl@npm:3.1.6":
+  version: 3.1.6
+  resolution: "@formatjs/intl@npm:3.1.6"
+  dependencies:
+    "@formatjs/ecma402-abstract": "npm:2.3.4"
+    "@formatjs/fast-memoize": "npm:2.2.7"
+    "@formatjs/icu-messageformat-parser": "npm:2.11.2"
+    intl-messageformat: "npm:10.7.16"
+    tslib: "npm:^2.8.0"
+  peerDependencies:
+    typescript: ^5.6.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/a31f8d2569c9f2384f67a76f1cc2c8bfc2721c97a7dee0e971b6cfc0f223449bab0cfdc29140e3b71d74b04573c20ee8600909d256293e296a809da69a141530
   languageName: node
   linkType: hard
 
@@ -7025,6 +7095,44 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/design-system@npm:^2.0.0-rc.25":
+  version: 2.0.0-rc.29
+  resolution: "@strapi/design-system@npm:2.0.0-rc.29"
+  dependencies:
+    "@codemirror/lang-json": "npm:6.0.1"
+    "@floating-ui/react-dom": "npm:2.1.0"
+    "@internationalized/date": "npm:3.5.4"
+    "@internationalized/number": "npm:3.5.3"
+    "@radix-ui/react-accordion": "npm:1.1.2"
+    "@radix-ui/react-alert-dialog": "npm:1.0.5"
+    "@radix-ui/react-avatar": "npm:1.0.4"
+    "@radix-ui/react-checkbox": "npm:1.0.4"
+    "@radix-ui/react-dialog": "npm:1.0.5"
+    "@radix-ui/react-dismissable-layer": "npm:1.0.5"
+    "@radix-ui/react-dropdown-menu": "npm:2.0.6"
+    "@radix-ui/react-focus-guards": "npm:1.0.1"
+    "@radix-ui/react-focus-scope": "npm:1.0.4"
+    "@radix-ui/react-popover": "npm:1.0.7"
+    "@radix-ui/react-progress": "npm:1.0.3"
+    "@radix-ui/react-radio-group": "npm:1.1.3"
+    "@radix-ui/react-scroll-area": "npm:1.0.5"
+    "@radix-ui/react-switch": "npm:1.0.3"
+    "@radix-ui/react-tabs": "npm:1.0.4"
+    "@radix-ui/react-tooltip": "npm:1.0.7"
+    "@radix-ui/react-use-callback-ref": "npm:1.0.1"
+    "@strapi/ui-primitives": "npm:2.0.0-rc.29"
+    "@uiw/react-codemirror": "npm:4.22.2"
+    lodash: "npm:4.17.21"
+    react-remove-scroll: "npm:2.5.10"
+  peerDependencies:
+    "@strapi/icons": ^2.0.0 || ^2.0.0-beta || ^2.0.0-alpha
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    styled-components: ^6.0.0
+  checksum: 10c0/db4f21e5dec626cb5c121e7af91cabf850097652ed0703eef1ae9fd5ff56c75f082c84f7081e079e9c0590583b5a11ebf030b6e721f2714f9a2cfc2a138f1076
+  languageName: node
+  linkType: hard
+
 "@strapi/email@npm:5.14.0":
   version: 5.14.0
   resolution: "@strapi/email@npm:5.14.0"
@@ -7098,6 +7206,17 @@ __metadata:
     react-dom: ^17.0.0 || ^18.0.0
     styled-components: ^6.0.0
   checksum: 10c0/5b9729438569fbcab505366b2e1a63f1133561b8ea98694ee572370316d28442915abdabd9e771d9f7a143b33bc01ad4721a1f3bfb1cfae3fc42f8da0b808a3d
+  languageName: node
+  linkType: hard
+
+"@strapi/icons@npm:^2.0.0-rc.25":
+  version: 2.0.0-rc.29
+  resolution: "@strapi/icons@npm:2.0.0-rc.29"
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    styled-components: ^6.0.0
+  checksum: 10c0/b10a9dc38444b6af6d5bf18fa6abb87bd459584f940d496bef84d1c46fb66559ad15a1cc9758329665bd823cc70208255a7b76182033550f3d9f03ce0d942787
   languageName: node
   linkType: hard
 
@@ -7362,6 +7481,37 @@ __metadata:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
   checksum: 10c0/e3b4b233645e9b8f20d1923f20fbc90f6475f237710ac75f5da938288e5fd4fe50ef477b98438c2992d26f74e5fe84c3df0807ed36cf8fed572ef1c88fc4edd8
+  languageName: node
+  linkType: hard
+
+"@strapi/ui-primitives@npm:2.0.0-rc.29":
+  version: 2.0.0-rc.29
+  resolution: "@strapi/ui-primitives@npm:2.0.0-rc.29"
+  dependencies:
+    "@radix-ui/number": "npm:1.0.1"
+    "@radix-ui/primitive": "npm:1.0.1"
+    "@radix-ui/react-collection": "npm:1.0.3"
+    "@radix-ui/react-compose-refs": "npm:1.0.1"
+    "@radix-ui/react-context": "npm:1.0.1"
+    "@radix-ui/react-direction": "npm:1.0.1"
+    "@radix-ui/react-dismissable-layer": "npm:1.0.5"
+    "@radix-ui/react-focus-guards": "npm:1.0.1"
+    "@radix-ui/react-focus-scope": "npm:1.0.4"
+    "@radix-ui/react-id": "npm:1.0.1"
+    "@radix-ui/react-popper": "npm:1.1.3"
+    "@radix-ui/react-portal": "npm:1.0.4"
+    "@radix-ui/react-primitive": "npm:1.0.3"
+    "@radix-ui/react-slot": "npm:1.0.2"
+    "@radix-ui/react-use-controllable-state": "npm:1.0.1"
+    "@radix-ui/react-use-layout-effect": "npm:1.0.1"
+    "@radix-ui/react-use-previous": "npm:1.0.1"
+    "@radix-ui/react-visually-hidden": "npm:1.0.3"
+    aria-hidden: "npm:1.2.4"
+    react-remove-scroll: "npm:2.5.10"
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 10c0/2048a71df27fed482b7dd5ce5e718c6c31c001cfb414526ecc2921e902a33d9fefe2c0515bb785a9b53eb706a690cd1766feec89bd7242232f9feea62865f613
   languageName: node
   linkType: hard
 
@@ -8612,6 +8762,15 @@ __metadata:
   dependencies:
     csstype: "npm:^3.0.2"
   checksum: 10c0/8b10b198e28997b3c57559750f8bcf5ae7b33c554b16b6f4fe2ece1d4de6a2fc8cb53e7effe08ec9cb939d2f479eb97c5e08aac2cf83b10a90164fe451cc8ea2
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:16 || 17 || 18 || 19":
+  version: 19.1.8
+  resolution: "@types/react@npm:19.1.8"
+  dependencies:
+    csstype: "npm:^3.0.2"
+  checksum: 10c0/4908772be6dc941df276931efeb0e781777fa76e4d5d12ff9f75eb2dcc2db3065e0100efde16fde562c5bafa310cc8f50c1ee40a22640459e066e72cd342143e
   languageName: node
   linkType: hard
 
@@ -12633,6 +12792,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"decimal.js@npm:^10.4.3":
+  version: 10.6.0
+  resolution: "decimal.js@npm:10.6.0"
+  checksum: 10c0/07d69fbcc54167a340d2d97de95f546f9ff1f69d2b45a02fd7a5292412df3cd9eb7e23065e532a318f5474a2e1bccf8392fdf0443ef467f97f3bf8cb0477e5aa
+  languageName: node
+  linkType: hard
+
 "decimal.js@npm:^10.5.0":
   version: 10.5.0
   resolution: "decimal.js@npm:10.5.0"
@@ -16619,6 +16785,18 @@ __metadata:
     "@formatjs/icu-messageformat-parser": "npm:2.7.6"
     tslib: "npm:^2.4.0"
   checksum: 10c0/423f1c879ce2d0e7b9e0b4c1787a81ead7fe4d1734e0366a20fef56b06c09146e7ca3618e2e78b4f8b8f2b59cafe6237ceed21530fe0c16cfb47d915fc80222d
+  languageName: node
+  linkType: hard
+
+"intl-messageformat@npm:10.7.16":
+  version: 10.7.16
+  resolution: "intl-messageformat@npm:10.7.16"
+  dependencies:
+    "@formatjs/ecma402-abstract": "npm:2.3.4"
+    "@formatjs/fast-memoize": "npm:2.2.7"
+    "@formatjs/icu-messageformat-parser": "npm:2.11.2"
+    tslib: "npm:^2.8.0"
+  checksum: 10c0/537735bf6439f0560f132895d117df6839957ac04cdd58d861f6da86803d40bfc19059e3d341ddb8de87214b73a6329b57f9acdb512bb0f745dcf08729507b9b
   languageName: node
   linkType: hard
 
@@ -22430,6 +22608,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-intl@npm:^7.1.11":
+  version: 7.1.11
+  resolution: "react-intl@npm:7.1.11"
+  dependencies:
+    "@formatjs/ecma402-abstract": "npm:2.3.4"
+    "@formatjs/icu-messageformat-parser": "npm:2.11.2"
+    "@formatjs/intl": "npm:3.1.6"
+    "@types/hoist-non-react-statics": "npm:^3.3.1"
+    "@types/react": "npm:16 || 17 || 18 || 19"
+    hoist-non-react-statics: "npm:^3.3.2"
+    intl-messageformat: "npm:10.7.16"
+    tslib: "npm:^2.8.0"
+  peerDependencies:
+    react: 16 || 17 || 18 || 19
+    typescript: ^5.6.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/f20770fb7bcce7a67acec70b9183f5320b7f3f9bbcb263ca8f4787817297674d1be158687f94d1e2803a9c8696d4f93dd86a28898aba8bc5197e858313e3dd06
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -22872,6 +23072,13 @@ __metadata:
   version: 2.3.1
   resolution: "regex-parser@npm:2.3.1"
   checksum: 10c0/a256f79c8b465e6765eb65799417200f8ee81f68cc202cc5563a02713e61ad51f6280672f8edee072ef37c5301a90f8d1a71cefb6ec3ed2ca0d1d88587286219
+  languageName: node
+  linkType: hard
+
+"regex-randstr@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "regex-randstr@npm:0.0.6"
+  checksum: 10c0/079708df7143707b786176c778e24bcec31e598586213a6a6de86cb2f2f1fb483d94e6542a87a27bbb142a01d3e6d0c94fdf857002d8fed5ab00e21c8879552c
   languageName: node
   linkType: hard
 
@@ -24687,6 +24894,26 @@ __metadata:
   bin:
     storybook: ./bin/index.cjs
   checksum: 10c0/4ab6c2c0df6e7ec020e5adc6771d1687ac9e7f6f04b9146bfb82cc5118a65cf1292943c3fcbe737e2aea1548309c0be6f2e0b7db1db578cab71efcf016af9d5e
+  languageName: node
+  linkType: hard
+
+"strapi-advanced-uuid@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "strapi-advanced-uuid@npm:2.1.1"
+  dependencies:
+    "@strapi/design-system": "npm:^2.0.0-rc.25"
+    "@strapi/icons": "npm:^2.0.0-rc.25"
+    react-intl: "npm:^7.1.11"
+    regex-randstr: "npm:^0.0.6"
+    uuid: "npm:^11.0.2"
+  peerDependencies:
+    "@strapi/sdk-plugin": ^5.3.2
+    "@strapi/strapi": ^5.1.0
+    react: ^18.3.1
+    react-dom: ^18.3.1
+    react-router-dom: ^6.30.1
+    styled-components: ^6.1.19
+  checksum: 10c0/dab9b56d2e1e664ab2143245ea37ac07e9a2258ce631b994c536fbcc9d413f3b551fab163df1cd42a2907cc34480e7fa91b7b8748f952034249ebc7b3e26bf58
   languageName: node
   linkType: hard
 
@@ -26672,7 +26899,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^11.1.0":
+"uuid@npm:^11.0.2, uuid@npm:^11.1.0":
   version: 11.1.0
   resolution: "uuid@npm:11.1.0"
   bin:

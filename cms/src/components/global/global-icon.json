@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_global_global_icons",
+  "info": {
+    "displayName": "global.icon"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

@@ -54,6 +54,12 @@
         }
       },
       "min": 0
+    },
+    "works": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::work.work",
+      "inversedBy": "clients"
     }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blog_blog_tags",
+  "info": {
+    "displayName": "blog.tag"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "customField",
+      "customField": "plugin::strapi-advanced-uuid.uuid"
+    }
+  },
+  "config": {}
+}
