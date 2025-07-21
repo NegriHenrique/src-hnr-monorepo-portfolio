@@ -10,6 +10,9 @@ import {
   Works,
 } from "./components";
 
+import Cal, { getCalApi } from "@calcom/embed-react";
+import { useEffect } from "react";
+
 const featureFlags = {
   showHero: true,
   showAbout: true,
@@ -31,6 +34,20 @@ export function HomeView({
   isLoading,
   strapiImagePrefix,
 }: HomeData) {
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "reuniao-de-1-hora" });
+      cal("ui", {
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#292929" },
+          dark: { "cal-brand": "#fafafa" },
+        },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    })();
+  }, []);
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -65,6 +82,12 @@ export function HomeView({
       {featureFlags.showContacts && contacts.length > 0 && (
         <Contacts contacts={contacts} />
       )}
+      <Cal
+        namespace="reuniao-de-1-hora"
+        calLink="henrique-negri/reuniao-de-1-hora"
+        style={{ width: "100%", height: "100%", overflow: "scroll" }}
+        config={{ layout: "month_view" }}
+      />
       <Footer />
     </div>
   );

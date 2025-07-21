@@ -37,6 +37,7 @@ module.exports = {
   images: {
     remotePatterns,
   },
+
   webpack(config) {
     return config;
   },
