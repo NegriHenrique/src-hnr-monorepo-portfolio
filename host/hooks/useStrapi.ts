@@ -5,20 +5,19 @@ import { fetchCollection, fetchSingleBySlug } from "@/lib/strapi-fetchers";
 
 export function useStrapiCollections<T extends StrapiContentType[]>(
   contentTypes: T,
-  locale: string
+  locale: string,
+  populates: Record<StrapiContentType, string[]>
 ): {
   [K in keyof T]: UseQueryResult<StrapiContentListResponse<T[K]>, Error>;
 } {
   const results = useQueries({
     queries: contentTypes.map((type) => ({
       queryKey: [type, locale],
-      queryFn: () => fetchCollection(type, locale),
+      queryFn: () => fetchCollection(type, locale, populates[type] || []),
     })),
   });
 
-  return results as {
-    [K in keyof T]: UseQueryResult<StrapiContentListResponse<T[K]>, Error>;
-  };
+  return results as any;
 }
 
 export function useStrapiCollection(

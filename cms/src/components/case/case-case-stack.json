@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_case_case_case_stacks",
+  "info": {
+    "displayName": "case.case-stack"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

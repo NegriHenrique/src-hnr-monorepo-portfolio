@@ -56,6 +56,12 @@
       },
       "unique": false,
       "min": 0
+    },
+    "work": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::work.work",
+      "inversedBy": "media"
     }
   }
 }

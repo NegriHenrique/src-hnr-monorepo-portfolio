@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_case_case_case_colors",
+  "info": {
+    "displayName": "case.case-color"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "hex": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary"
+      ]
+    }
+  },
+  "config": {}
+}

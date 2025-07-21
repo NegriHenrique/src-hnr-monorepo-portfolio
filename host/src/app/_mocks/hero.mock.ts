@@ -1,4 +1,4 @@
-import { HeroProps } from "../components/Hero";
+import { HeroProps } from "../home/view/components/Hero";
 
 export const heroData: HeroProps = {
   name: "Henrique Negri",

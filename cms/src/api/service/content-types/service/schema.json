@@ -34,15 +34,6 @@
       "maxLength": 255,
       "required": true
     },
-    "icon": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": true
-    },
     "order": {
       "type": "integer",
       "pluginOptions": {
@@ -51,6 +42,16 @@
         }
       },
       "min": 0
+    },
+    "icon": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "global.global-icon",
+      "repeatable": false
     }
   }
 }
