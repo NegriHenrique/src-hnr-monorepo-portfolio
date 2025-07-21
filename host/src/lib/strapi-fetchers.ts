@@ -9,6 +9,7 @@ export function fetchCollection(
   locale: string,
   populate: string[] = []
 ) {
+  console.log("API url:", API);
   const populateParams = populate.map((p) => `populate[]=${p}`).join("&");
   return axios
     .get(`${API}/${contentType}?locale=${locale}&${populateParams}`)
@@ -20,7 +21,7 @@ export async function fetchSingleBySlug(
   locale: string
 ) {
   const query = getStrapiQueryMap(locale)[contentType].single;
-  const url = `${STRAPI_BASE_URL}/${contentType}?filters[slug][$eq]=${slug}${query}`;
+  const url = `${API}/${contentType}?filters[slug][$eq]=${slug}${query}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error("Failed to fetch by slug");
   const json = await res.json();
