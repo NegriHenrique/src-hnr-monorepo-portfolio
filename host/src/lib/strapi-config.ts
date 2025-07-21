@@ -38,5 +38,9 @@ export function getStrapiQueryMap(
       list: `?locale=${locale}&populate=*&sort[0]=order:asc&sort[1]=id:desc`,
       single: `?locale=${locale}&populate=*`,
     },
+    [StrapiContentType.ABOUT]: {
+      list: `?locale=${locale}&populate=*`,
+      single: `?locale=${locale}&populate=*`,
+    },
   };
 }

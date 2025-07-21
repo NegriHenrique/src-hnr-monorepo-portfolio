@@ -11,7 +11,10 @@ export default meta;
 type Story = StoryObj<typeof Services>;
 
 const mock: ServicesProps = {
-  services: servicesData,
+  services: servicesData.map((service) => ({
+    ...service,
+    icon: { name: service.icon },
+  })),
 };
 
 export const Default: Story = {

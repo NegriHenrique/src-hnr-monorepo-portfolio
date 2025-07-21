@@ -24,6 +24,7 @@
     "dev:mfe:geogrid": "yarn workspace @mfes/geogrid dev",
     "dev:mfe:bg-remover": "yarn workspace @mfes/bg-remover dev",
     "dev:mfe:focus": "yarn workspace @mfes/focus dev",
+    "build:host": "yarn workspace host build",
     "build:mfe:geogrid": "yarn workspace @mfes/geogrid build",
     "build:mfe:bg-remover": "yarn workspace @mfes/bg-remover build",
     "build:mfe:focus": "yarn workspace @mfes/focus build",
